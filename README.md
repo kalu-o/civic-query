@@ -6,6 +6,9 @@
 
 Unlike standard cloud chatbots, **CivicQuery** runs entirely on-premise. It is architected for **GDPR compliance** and **Data Sovereignty**, ensuring that sensitive citizen data never leaves the municipal infrastructure.
 
+<img width="212" height="392" alt="1" src="https://github.com/user-attachments/assets/9fe1e571-8de1-482e-8e0f-93d8edb16123" />
+
+
 ## Table of Contents
 
 - [Features](#features)
