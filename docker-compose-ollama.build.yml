@@ -1,0 +1,41 @@
+version: '3.8' # Using a more modern version is good practice
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ollama_data:/root/.ollama # Persists models in a named volume
+    ports:
+      - "11437:11434" # Expose the port to the host for debugging/access
+    restart: unless-stopped
+
+  civic_query:
+    container_name: civic_query
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    env_file:
+      - .env
+      
+    environment:
+      # This overrides any value in utils.py or .env file
+      OLLAMA_BASE_URL: http://ollama:11434
+      
+    # This ensures the ollama container is started before this one
+    depends_on:
+      - ollama
+      
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+volumes:
+  ollama_data:
