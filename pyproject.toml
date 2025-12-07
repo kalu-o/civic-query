@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "civic-query-service"
+version = "0.1.0-dev"
+description = "End-to-end Retrieval Augmented Generation Civic Query System"
+authors = ["Kalu U. Ogbureke <kalu.ogbureke@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "civic_query" }]
+
+[tool.poetry.scripts]
+civic_query_service = "civic_query.app:start"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+setuptools = "^69.0.3"
+uvicorn = "^0.27.1"
+fastapi = "^0.110.0"
+requests = "^2.31.0"
+langchain = "^0.2.0"
+Openai = "^1.14.1"
+langchain-community = "^0.2.0"
+langchain-ollama = "^0.1.0" 
+pypdf = "^4.2.0"
+pycryptodome = "^3.20.0"
+sentence-transformers = "^2.7.0"
+chromadb = "^0.5.0"
+simsimd = "^6.5.3"
+
+[tool.poetry.dev-dependencies]
+formencode = "^2.0.1"
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.0.0"
+pytest-mock = "^3.10.0"
+black = "^22.6.0"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+pylint = "^2.14.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
